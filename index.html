@@ -95,14 +95,10 @@
       justify-content: center;
       gap: 10px;
       margin-top: 10px;
+      align-items: center;
     }
-    .quantity-control button {
-      padding: 5px 10px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    input[type='number'] {
-      width: 60px;
+    .quantity-control input[type='number'] {
+      width: 80px;
       padding: 5px;
       text-align: center;
     }
@@ -116,40 +112,44 @@
   <div class="product-wrapper">
     <section class="product-section">
       <div class="product">
-        <img src="https://myhartono.com/images/detailed/386/SJ236MNHS-3.webp" alt="Kulkas">
-        <h3>Kulkas</h3>
-        <div class="price-line">Rp1.000.000</div>
+        <img src="https://amanahmultiinterior.com/wp-content/uploads/2022/11/kelebihan-kusen-aluminium.jpg" alt="Kusen">
+        <h3>Kusen</h3>
+        <div class="price-line">Rp150.000 / m</div>
         <div class="quantity-control">
-          <button onclick="changeQty(this, -1)">-</button>
-          <input type="number" value="0" min="0" onchange="calculateTotal()" data-price="1000000">
-          <button onclick="changeQty(this, 1)">+</button>
+          <input type="number" value="0" step="0.1" min="0" onchange="calculateTotal()" data-price="150000">
+          <span>meter</span>
         </div>
       </div>
       <div class="product">
-        <img src="https://myhartono.com/images/detailed/353/T12EV5.jpg" alt="AC">
-        <h3>Air Conditioner</h3>
-        <div class="price-line">Rp2.000.000</div>
+        <img src="https://down-id.img.susercontent.com/file/53d2de6c24129dd3b2b2e2657f7e7a17" alt="Silikon">
+        <h3>Silikon</h3>
+        <div class="price-line">Rp10.000 / m</div>
         <div class="quantity-control">
-          <button onclick="changeQty(this, -1)">-</button>
-          <input type="number" value="0" min="0" onchange="calculateTotal()" data-price="2000000">
-          <button onclick="changeQty(this, 1)">+</button>
+          <input type="number" value="0" step="0.1" min="0" onchange="calculateTotal()" data-price="10000">
+          <span>meter</span>
         </div>
       </div>
       <div class="product">
-        <img src="https://cdn.ruparupa.io/fit-in/400x400/filters:format(webp)/filters:quality(90)/ruparupa-com/image/upload/Products/10098766_1.jpg" alt="Meja">
-        <h3>Meja</h3>
-        <div class="price-line">Rp500.000</div>
+        <img src="https://images.tokopedia.net/img/cache/700/product-1/2019/6/15/3795978/3795978_5f41dc0e-07fd-473c-ab7a-12b9bfbf7877_1052_1052" alt="Hollow Galvanis">
+        <h3>Hollow Galvanis</h3>
+        <div class="price-line">Rp75.000 / m</div>
         <div class="quantity-control">
-          <button onclick="changeQty(this, -1)">-</button>
-          <input type="number" value="0" min="0" onchange="calculateTotal()" data-price="500000">
-          <button onclick="changeQty(this, 1)">+</button>
+          <input type="number" value="0" step="0.1" min="0" onchange="calculateTotal()" data-price="75000">
+          <span>meter</span>
+        </div>
+      </div>
+      <div class="product">
+        <img src="https://parto.id/asset/foto_produk/WhatsApp_Image_2023-10-19_at_20_08_20_(1).jpeg" alt="Kaca">
+        <h3>Kaca</h3>
+        <div class="price-line">Rp210.000 / m</div>
+        <div class="quantity-control">
+          <input type="number" value="0" step="0.1" min="0" onchange="calculateTotal()" data-price="210000">
+          <span>meter</span>
         </div>
       </div>
     </section>
 
-    <br>
-    <br>
-    <br>    
+    <br><br><br>    
     <div class="total" id="totalHarga">
       Total Harga: Rp0
     </div>
@@ -159,7 +159,7 @@
     <div class="hero-text">
       <h1>Rumah Minimalis dan Aesthetic</h1>
       <p>di Desain oleh Fany di Alana</p>
-      <button><a href="https://wa.me/6288235917580">Hubungi Saya</button>
+      <button><a href="https://wa.me/6288235917580" style="color:white; text-decoration:none;">Hubungi Saya</a></button>
     </div>
   </section>
 
@@ -168,20 +168,11 @@
       let inputs = document.querySelectorAll('input[type="number"]');
       let total = 0;
       inputs.forEach(input => {
-        const qty = parseInt(input.value) || 0;
+        const qty = parseFloat(input.value) || 0;
         const price = parseInt(input.getAttribute('data-price'));
         total += qty * price;
       });
       document.getElementById('totalHarga').innerText = 'Total Harga: Rp' + total.toLocaleString('id-ID');
-    }
-
-    function changeQty(button, delta) {
-      const input = button.parentElement.querySelector('input');
-      let current = parseInt(input.value) || 0;
-      current += delta;
-      if (current < 0) current = 0;
-      input.value = current;
-      calculateTotal();
     }
   </script>
 </body>
